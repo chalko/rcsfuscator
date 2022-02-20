@@ -2,14 +2,13 @@ package main
 
 import (
 	"bufio"
-	"fmt"
+	"chalko.com/obfuscator"
 	"os"
 )
 
 func main() {
 	reader := bufio.NewReader(os.Stdin)
-	message, _ := reader.ReadString('\n')
-	fmt.Println("Hello, world.")
-	fmt.Println(message)
-
+	writer := bufio.NewWriter(os.Stdout)
+	defer writer.Flush()
+	obfuscator.Obfuscate(reader, writer)
 }
